@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>硬件价格雷达 — 电脑配件二手行情监控</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg-primary: #0d0f1a;
+      --bg-secondary: #141728;
+      --bg-card: #1a1e35;
+      --bg-card-hover: #1f2440;
+      --accent: #ff6b35;
+      --accent2: #4ecdc4;
+      --accent3: #45b7d1;
+      --text-primary: #e8eaf6;
+      --text-secondary: #8892b0;
+      --text-muted: #4a5568;
+      --border: #252844;
+      --green: #4caf50;
+      --red: #f44336;
+      --yellow: #ffc107;
+      --glow: 0 0 20px rgba(255, 107, 53, 0.3);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* 顶部背景装饰 */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -200px;
+      right: -200px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(78,205,196,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header {
+      position: relative;
+      z-index: 10;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      background: rgba(13,15,26,0.8);
+      position: sticky;
+      top: 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: var(--glow);
+    }
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .logo-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: -2px;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(76,175,80,0.15);
+      border: 1px solid rgba(76,175,80,0.3);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--green);
+    }
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .update-time {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* 搜索区域 */
+    .search-section {
+      position: relative;
+      z-index: 5;
+      padding: 40px 32px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .search-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .search-title span {
+      background: linear-gradient(90deg, var(--accent), #ff9f43, var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .search-subtitle {
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      font-size: 14px;
+    }
+
+    .search-box {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .search-input-wrap {
+      flex: 1;
+      position: relative;
+    }
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    .search-input {
+      width: 100%;
+      padding: 14px 16px 14px 48px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      color: var(--text-primary);
+      font-size: 16px;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255,107,53,0.15);
+    }
+    .search-input::placeholder { color: var(--text-muted); }
+
+    .search-btn {
+      padding: 14px 28px;
+      background: linear-gradient(135deg, var(--accent), #ff9f43);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      box-shadow: 0 4px 15px rgba(255,107,53,0.4);
+    }
+    .search-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(255,107,53,0.5);
+    }
+    .search-btn:active { transform: translateY(0); }
+    .search-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .quick-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .quick-tag {
+      padding: 5px 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .quick-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(255,107,53,0.08);
+    }
+
+    /* 主内容区 */
+    .main {
+      position: relative;
+      z-index: 5;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px 60px;
+    }
+
+    /* 统计卡片 */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      transition: all 0.2s;
+    }
+    .stat-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255,107,53,0.3);
+      transform: translateY(-2px);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .stat-value.accent { color: var(--accent); }
+    .stat-value.green { color: var(--green); }
+    .stat-value.red { color: #e74c3c; }
+    .stat-value.blue { color: var(--accent3); }
+    .stat-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* 图表 + 列表双列布局 */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-badge {
+      font-size: 11px;
+      background: rgba(255,107,53,0.15);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .chart-wrap {
+      position: relative;
+      height: 220px;
+    }
+
+    /* 价格分布 */
+    .price-bar-wrap {
+      height: 220px;
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      padding-bottom: 24px;
+    }
+    .price-bar-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: flex-end;
+    }
+    .price-bar {
+      width: 100%;
+      border-radius: 4px 4px 0 0;
+      transition: all 0.5s ease;
+      cursor: pointer;
+      position: relative;
+    }
+    .price-bar:hover { opacity: 0.8; }
+    .price-bar-label {
+      font-size: 9px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      writing-mode: vertical-lr;
+      white-space: nowrap;
+    }
+
+    /* 商品列表 */
+    .items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .item-card {
+      display: flex;
+      gap: 14px;
+      padding: 14px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .item-card:hover {
+      border-color: rgba(255,107,53,0.4);
+      background: var(--bg-card-hover);
+      transform: translateX(4px);
+    }
+
+    .item-img {
+      width: 64px;
+      height: 64px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: var(--bg-card);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+    .item-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+
+    .item-info { flex: 1; min-width: 0; }
+    .item-title {
+      font-size: 13px;
+      margin-bottom: 6px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--text-primary);
+    }
+    .item-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .item-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .item-orig-price {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+    .item-badge {
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(78,205,196,0.15);
+      color: var(--accent2);
+      border: 1px solid rgba(78,205,196,0.2);
+    }
+    .item-location {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .item-platform {
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+    .item-platform.xianyu {
+      background: rgba(255,107,53,0.15);
+      color: var(--accent);
+    }
+    .item-platform.taobao {
+      background: rgba(255,80,27,0.15);
+      color: #ff6b2b;
+    }
+    .item-platform.mock {
+      background: rgba(148,163,184,0.1);
+      color: var(--text-muted);
+    }
+
+    /* 热门搜索 */
+    .trending-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .trending-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 14px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .trending-item:hover {
+      border-color: rgba(78,205,196,0.4);
+      background: var(--bg-card-hover);
+    }
+    .trending-rank {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .trending-rank.top3 { color: var(--accent); font-weight: 600; }
+    .trending-keyword {
+      font-size: 14px;
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .trending-price {
+      font-size: 16px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .trending-count {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* 全宽商品网格 */
+    .all-items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .grid-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .grid-item:hover {
+      border-color: rgba(255,107,53,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .grid-item-img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      background: var(--bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+    .grid-item-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .grid-item-body { padding: 12px; }
+    .grid-item-title {
+      font-size: 13px;
+      margin-bottom: 8px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      line-height: 1.4;
+    }
+    .grid-item-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .grid-item-price {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* 筛选栏 */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .filter-label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .filter-btn {
+      padding: 5px 14px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-secondary);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(255,107,53,0.08);
+    }
+
+    /* 空状态 */
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--text-muted);
+    }
+    .empty-icon { font-size: 60px; margin-bottom: 16px; }
+    .empty-title { font-size: 18px; color: var(--text-secondary); margin-bottom: 8px; }
+
+    /* loading */
+    .loading-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(13,15,26,0.8);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      backdrop-filter: blur(4px);
+    }
+    .loading-overlay.show { display: flex; }
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text { color: var(--text-secondary); font-size: 14px; }
+
+    /* 数据来源提示 */
+    .data-source-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-left: 8px;
+    }
+    .data-source-badge.live {
+      background: rgba(76,175,80,0.15);
+      color: var(--green);
+      border: 1px solid rgba(76,175,80,0.2);
+    }
+    .data-source-badge.mock {
+      background: rgba(255,193,7,0.15);
+      color: var(--yellow);
+      border: 1px solid rgba(255,193,7,0.2);
+    }
+    .data-source-badge.mixed {
+      background: rgba(69,183,209,0.15);
+      color: var(--accent3);
+      border: 1px solid rgba(69,183,209,0.2);
+    }
+
+    /* 响应式 */
+    @media (max-width: 900px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .content-grid { grid-template-columns: 1fr; }
+      .trending-grid { grid-template-columns: repeat(2, 1fr); }
+      .search-section, .main { padding-left: 16px; padding-right: 16px; }
+      header { padding: 16px; }
+    }
+    @media (max-width: 500px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .all-items-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* 刷新按钮 */
+    .refresh-btn {
+      padding: 6px 14px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-secondary);
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .refresh-btn:hover {
+      border-color: var(--accent2);
+      color: var(--accent2);
+    }
+    .refresh-icon { display: inline-block; transition: transform 0.5s; }
+    .refresh-btn:hover .refresh-icon { transform: rotate(180deg); }
+
+    /* 价格标尺 */
+    .price-range-bar {
+      height: 6px;
+      background: linear-gradient(90deg, var(--green), var(--yellow), var(--accent));
+      border-radius: 3px;
+      margin: 12px 0;
+      position: relative;
+    }
+    .price-range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* 图表容器 */
+    #trendChart { max-height: 220px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">📡</div>
+    <div>
+      <div class="logo-text">硬件价格雷达</div>
+      <div class="logo-sub">电脑配件 · 二手行情监控</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="live-badge">
+      <div class="live-dot"></div>
+      实时监控中
+    </div>
+    <div class="update-time" id="updateTime">—</div>
+  </div>
+</header>
+
+<div class="search-section">
+  <h1 class="search-title">追踪 <span>电脑硬件</span> 的二手行情</h1>
+  <p class="search-subtitle">实时监控闲鱼 · 淘宝配件价格，内存/显卡/CPU/SSD 一网打尽</p>
+  
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <span class="search-icon">🔍</span>
+      <input
+        class="search-input"
+        id="searchInput"
+        type="text"
+        placeholder="搜索配件，如：DDR5 32G、RTX 4070、5800X3D、1TB SSD..."
+        autocomplete="off"
+      />
+    </div>
+    <button class="search-btn" id="searchBtn" onclick="doSearch()">搜索行情</button>
+  </div>
+
+  <div class="quick-tags">
+    <span class="quick-tag" onclick="quickSearch(this)">💾 DDR5 32G</span>
+    <span class="quick-tag" onclick="quickSearch(this)">💾 DDR4 16G</span>
+    <span class="quick-tag" onclick="quickSearch(this)">🎮 RTX 4070</span>
+    <span class="quick-tag" onclick="quickSearch(this)">🎮 RTX 4060Ti</span>
+    <span class="quick-tag" onclick="quickSearch(this)">🔧 5800X3D</span>
+    <span class="quick-tag" onclick="quickSearch(this)">🔧 7800X3D</span>
+    <span class="quick-tag" onclick="quickSearch(this)">💿 1TB NVMe SSD</span>
+    <span class="quick-tag" onclick="quickSearch(this)">💿 2TB 固态硬盘</span>
+    <span class="quick-tag" onclick="quickSearch(this)">⚡ 750W 电源</span>
+    <span class="quick-tag" onclick="quickSearch(this)">❄️ 利民散热器</span>
+  </div>
+</div>
+
+<div class="main">
+  <!-- 初始状态：热门搜索 -->
+  <div id="homeView">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">🔥 硬件热门监控</div>
+        <span class="card-badge">实时更新</span>
+      </div>
+      <div class="trending-grid" id="trendingGrid">
+        <div style="color:var(--text-muted);font-size:13px;grid-column:1/-1;text-align:center;padding:20px">加载中...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 搜索结果 -->
+  <div id="resultView" style="display:none">
+    <!-- 统计卡片 -->
+    <div class="stats-grid" id="statsGrid">
+      <div class="stat-card">
+        <div class="stat-label">平均价格</div>
+        <div class="stat-value accent" id="statAvg">—</div>
+        <div class="stat-sub">市场均价</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">最低价格</div>
+        <div class="stat-value green" id="statMin">—</div>
+        <div class="stat-sub">当前最低</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">最高价格</div>
+        <div class="stat-value red" id="statMax">—</div>
+        <div class="stat-sub">当前最高</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">在售数量</div>
+        <div class="stat-value blue" id="statCount">—</div>
+        <div class="stat-sub">件商品</div>
+      </div>
+    </div>
+
+    <!-- 图表 + 价格列表 -->
+    <div class="content-grid">
+      <!-- 价格趋势图 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            📈 价格趋势
+            <span id="trendSourceBadge"></span>
+          </div>
+          <button class="refresh-btn" onclick="refreshHistory()">
+            <span class="refresh-icon">↻</span> 刷新
+          </button>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="trendChart"></canvas>
+        </div>
+      </div>
+
+      <!-- 价格分布 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">📊 价格分布</div>
+          <span style="font-size:12px;color:var(--text-muted)" id="priceRangeText">—</span>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="distChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- 商品列表 -->
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-header">
+        <div class="card-title">
+          🛍️ 商品列表
+          <span id="itemsSourceBadge"></span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="refresh-btn" onclick="doSearch(true)">
+            <span class="refresh-icon">↻</span> 强制刷新
+          </button>
+        </div>
+      </div>
+      
+      <div class="filter-bar">
+        <span class="filter-label">排序：</span>
+        <button class="filter-btn active" onclick="sortItems('price_asc', this)">价格↑</button>
+        <button class="filter-btn" onclick="sortItems('price_desc', this)">价格↓</button>
+        <button class="filter-btn" onclick="sortItems('newest', this)">最新</button>
+        <span style="flex:1"></span>
+        <span class="filter-label" id="dataSourceInfo"></span>
+      </div>
+
+      <div class="all-items-grid" id="itemsGrid">
+        <!-- 商品卡片 -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Loading -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+  <div class="loading-text" id="loadingText">正在抓取最新行情...</div>
+</div>
+
+<script>
+let currentItems = [];
+let trendChartInstance = null;
+let distChartInstance = null;
+let currentKeyword = '';
+
+const API_BASE = '';
+
+// 页面加载
+document.addEventListener('DOMContentLoaded', () => {
+  loadTrending();
+  updateTime();
+  setInterval(updateTime, 60000);
+
+  document.getElementById('searchInput').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') doSearch();
+  });
+});
+
+function updateTime() {
+  const now = new Date();
+  document.getElementById('updateTime').textContent = '最后更新 ' + now.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+}
+
+async function loadTrending() {
+  try {
+    const res = await fetch(API_BASE + '/api/trending');
+    const data = await res.json();
+    renderTrending(data.trending);
+  } catch (e) {
+    console.log('trending err', e);
+  }
+}
+
+function renderTrending(list) {
+  const grid = document.getElementById('trendingGrid');
+  grid.innerHTML = list.map((item, i) => `
+    <div class="trending-item" onclick="quickSearchByText('${item.keyword}')">
+      <div class="trending-rank ${i < 3 ? 'top3' : ''}">NO.${i + 1}</div>
+      <div class="trending-keyword">${item.keyword}</div>
+      <div class="trending-price">¥${item.avgPrice.toLocaleString()}</div>
+      <div class="trending-count">${item.count.toLocaleString()} 件在售</div>
+    </div>
+  `).join('');
+}
+
+function quickSearch(el) {
+  const text = el.textContent.replace(/^[^\s]+\s/, '').trim();
+  document.getElementById('searchInput').value = text;
+  doSearch();
+}
+
+function quickSearchByText(text) {
+  document.getElementById('searchInput').value = text;
+  doSearch();
+}
+
+async function doSearch(forceRefresh = false) {
+  const keyword = document.getElementById('searchInput').value.trim();
+  if (!keyword) return;
+
+  currentKeyword = keyword;
+  showLoading('正在抓取 "' + keyword + '" 的最新行情...');
+
+  try {
+    const url = API_BASE + '/api/search?keyword=' + encodeURIComponent(keyword) + (forceRefresh ? '&forceRefresh=1' : '');
+    const res = await fetch(url);
+    const data = await res.json();
+
+    hideLoading();
+    renderResults(data);
+    loadPriceHistory(keyword);
+  } catch (err) {
+    hideLoading();
+    alert('获取数据失败，请稍后重试');
+  }
+}
+
+function renderResults(data) {
+  document.getElementById('homeView').style.display = 'none';
+  document.getElementById('resultView').style.display = 'block';
+
+  // 统计数据
+  const { stats, items, dataSource, fromCache, cacheAge } = data;
+  document.getElementById('statAvg').textContent = '¥' + stats.avgPrice.toLocaleString();
+  document.getElementById('statMin').textContent = '¥' + stats.minPrice.toLocaleString();
+  document.getElementById('statMax').textContent = '¥' + stats.maxPrice.toLocaleString();
+  document.getElementById('statCount').textContent = stats.count;
+
+  // 数据来源标识
+  const sourceLabel = {
+    live: ['实时数据', 'live'],
+    mock: ['模拟数据', 'mock'],
+    mixed: ['混合数据', 'mixed'],
+  };
+  const [label, cls] = sourceLabel[dataSource] || ['未知', 'mock'];
+  const badgeHtml = `<span class="data-source-badge ${cls}">● ${label}</span>`;
+  document.getElementById('trendSourceBadge').innerHTML = badgeHtml;
+  document.getElementById('itemsSourceBadge').innerHTML = badgeHtml;
+
+  const cacheInfo = fromCache ? `缓存 ${cacheAge}秒前` : '刚刚更新';
+  document.getElementById('dataSourceInfo').textContent = cacheInfo;
+
+  currentItems = items;
+  renderItemsGrid(items);
+  renderDistChart(items);
+  updateTime();
+}
+
+function renderItemsGrid(items) {
+  const grid = document.getElementById('itemsGrid');
+  if (!items || items.length === 0) {
+    grid.innerHTML = '<div class="empty-state"><div class="empty-icon">📭</div><div class="empty-title">暂无商品数据</div></div>';
+    return;
+  }
+
+  grid.innerHTML = items.map(item => {
+    const platformCls = item.platform === '闲鱼' ? 'xianyu' : item.platform === '淘宝' ? 'taobao' : 'mock';
+    const timeAgo = getTimeAgo(item.timestamp);
+    const imgContent = item.image 
+      ? `<img src="${item.image}" onerror="this.parentElement.innerHTML='📦'" loading="lazy" alt="${item.title}">`
+      : '📦';
+    
+    return `
+      <a class="grid-item" href="${item.url}" target="_blank" rel="noopener">
+        <div class="grid-item-img">${imgContent}</div>
+        <div class="grid-item-body">
+          <div class="grid-item-title">${escapeHtml(item.title)}</div>
+          <div class="grid-item-price-row">
+            <div class="grid-item-price">¥${item.price.toLocaleString()}</div>
+            <span class="item-platform ${platformCls}">${item.platform || '二手'}</span>
+          </div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:4px">
+            ${item.location ? '📍' + item.location + ' · ' : ''}${timeAgo}
+          </div>
+        </div>
+      </a>
+    `;
+  }).join('');
+}
+
+function renderDistChart(items) {
+  if (!items || items.length === 0) return;
+
+  const prices = items.map(i => i.price).filter(p => p > 0);
+  const minP = Math.min(...prices);
+  const maxP = Math.max(...prices);
+  const range = maxP - minP;
+  
+  // 分8个区间
+  const bucketCount = 8;
+  const bucketSize = range / bucketCount;
+  const buckets = Array(bucketCount).fill(0);
+  const labels = [];
+
+  for (let i = 0; i < bucketCount; i++) {
+    const from = Math.round(minP + i * bucketSize);
+    const to = Math.round(minP + (i + 1) * bucketSize);
+    labels.push(`¥${from < 1000 ? from : (from/1000).toFixed(1)+'k'}`);
+  }
+
+  prices.forEach(p => {
+    const idx = Math.min(Math.floor((p - minP) / bucketSize), bucketCount - 1);
+    buckets[idx]++;
+  });
+
+  document.getElementById('priceRangeText').textContent = `¥${minP} ~ ¥${maxP}`;
+
+  if (distChartInstance) distChartInstance.destroy();
+  const ctx = document.getElementById('distChart').getContext('2d');
+  distChartInstance = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: '商品数量',
+        data: buckets,
+        backgroundColor: buckets.map((v, i) => {
+          const ratio = i / bucketCount;
+          return `hsla(${160 - ratio * 60}, 70%, 55%, 0.7)`;
+        }),
+        borderColor: 'transparent',
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.parsed.y} 件商品`
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(255,255,255,0.05)' },
+          ticks: { color: '#8892b0', font: { size: 10 } }
+        },
+        y: {
+          grid: { color: 'rgba(255,255,255,0.05)' },
+          ticks: { color: '#8892b0', font: { size: 10 } }
+        }
+      }
+    }
+  });
+}
+
+async function loadPriceHistory(keyword) {
+  try {
+    const res = await fetch(API_BASE + '/api/history?keyword=' + encodeURIComponent(keyword));
+    const data = await res.json();
+    renderTrendChart(data.history);
+  } catch (e) {
+    console.log('history err', e);
+  }
+}
+
+function refreshHistory() {
+  if (currentKeyword) loadPriceHistory(currentKeyword);
+}
+
+function renderTrendChart(history) {
+  if (!history || history.length === 0) return;
+
+  const labels = history.map(h => {
+    const d = new Date(h.time);
+    return d.getHours() + ':' + String(d.getMinutes()).padStart(2, '0');
+  });
+
+  if (trendChartInstance) trendChartInstance.destroy();
+  const ctx = document.getElementById('trendChart').getContext('2d');
+  
+  const gradient = ctx.createLinearGradient(0, 0, 0, 220);
+  gradient.addColorStop(0, 'rgba(255,107,53,0.3)');
+  gradient.addColorStop(1, 'rgba(255,107,53,0.0)');
+
+  trendChartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: '均价',
+          data: history.map(h => h.avgPrice),
+          borderColor: '#ff6b35',
+          backgroundColor: gradient,
+          borderWidth: 2,
+          fill: true,
+          tension: 0.4,
+          pointRadius: 2,
+          pointHoverRadius: 5,
+        },
+        {
+          label: '最低价',
+          data: history.map(h => h.minPrice),
+          borderColor: '#4caf50',
+          backgroundColor: 'transparent',
+          borderWidth: 1.5,
+          borderDash: [4, 4],
+          fill: false,
+          tension: 0.4,
+          pointRadius: 0,
+        },
+        {
+          label: '最高价',
+          data: history.map(h => h.maxPrice),
+          borderColor: '#f44336',
+          backgroundColor: 'transparent',
+          borderWidth: 1.5,
+          borderDash: [4, 4],
+          fill: false,
+          tension: 0.4,
+          pointRadius: 0,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { intersect: false, mode: 'index' },
+      plugins: {
+        legend: {
+          labels: { color: '#8892b0', font: { size: 11 }, boxWidth: 16, padding: 12 }
+        },
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.dataset.label}: ¥${ctx.parsed.y.toLocaleString()}`
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: {
+            color: '#8892b0',
+            font: { size: 10 },
+            maxTicksLimit: 8,
+          }
+        },
+        y: {
+          grid: { color: 'rgba(255,255,255,0.04)' },
+          ticks: {
+            color: '#8892b0',
+            font: { size: 10 },
+            callback: v => '¥' + (v >= 1000 ? (v/1000).toFixed(1) + 'k' : v)
+          }
+        }
+      }
+    }
+  });
+}
+
+function sortItems(mode, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  let sorted = [...currentItems];
+  if (mode === 'price_asc') sorted.sort((a, b) => a.price - b.price);
+  else if (mode === 'price_desc') sorted.sort((a, b) => b.price - a.price);
+  else if (mode === 'newest') sorted.sort((a, b) => b.timestamp - a.timestamp);
+
+  renderItemsGrid(sorted);
+}
+
+function showLoading(text = '加载中...') {
+  document.getElementById('loadingText').textContent = text;
+  document.getElementById('loadingOverlay').classList.add('show');
+  document.getElementById('searchBtn').disabled = true;
+}
+
+function hideLoading() {
+  document.getElementById('loadingOverlay').classList.remove('show');
+  document.getElementById('searchBtn').disabled = false;
+}
+
+function getTimeAgo(timestamp) {
+  if (!timestamp) return '';
+  const diff = Date.now() - timestamp;
+  if (diff < 60000) return '刚刚';
+  if (diff < 3600000) return Math.floor(diff / 60000) + '分钟前';
+  if (diff < 86400000) return Math.floor(diff / 3600000) + '小时前';
+  return Math.floor(diff / 86400000) + '天前';
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+</script>
+</body>
+</html>

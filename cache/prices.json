@@ -1,0 +1,925 @@
+{
+  "fetchTime": "2026-05-20T07:01:47.234Z",
+  "rawCount": 91,
+  "merged": 31,
+  "prices": {
+    "RTX 5090、RTX 5080": {
+      "medianPrice": 5080,
+      "minPrice": 5080,
+      "maxPrice": 5080,
+      "samples": 4,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5090与RTX 5090": {
+      "medianPrice": 5090,
+      "minPrice": 5090,
+      "maxPrice": 5090,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5090/5090": {
+      "medianPrice": 5090,
+      "minPrice": 5090,
+      "maxPrice": 5090,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5080、RTX 5070": {
+      "medianPrice": 5070,
+      "minPrice": 5070,
+      "maxPrice": 5070,
+      "samples": 4,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5070 TI、RTX 5070": {
+      "medianPrice": 5070,
+      "minPrice": 5070,
+      "maxPrice": 5070,
+      "samples": 8,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX5070 SOLID OC WHITE 12G 4549": {
+      "medianPrice": 4549,
+      "minPrice": 4549,
+      "maxPrice": 4549,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX5070 12G霹雳版OC HB 4559": {
+      "medianPrice": 4559,
+      "minPrice": 4559,
+      "maxPrice": 4559,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX5070 12G三风扇 4249": {
+      "medianPrice": 4249,
+      "minPrice": 4249,
+      "maxPrice": 4249,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX5070 12G星云 4359": {
+      "medianPrice": 4359,
+      "minPrice": 4359,
+      "maxPrice": 4359,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060TI 降至3499": {
+      "medianPrice": 3499,
+      "minPrice": 3499,
+      "maxPrice": 3499,
+      "samples": 3,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060 TI B GDDR7 大地之神索泰 RTX 5060": {
+      "medianPrice": 5060,
+      "minPrice": 5060,
+      "maxPrice": 5060,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060TI 降到了3499": {
+      "medianPrice": 3499,
+      "minPrice": 3499,
+      "maxPrice": 3499,
+      "samples": 6,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060 TI 全主流型号;笔记本端则包含搭载RTX 5090": {
+      "medianPrice": 5090,
+      "minPrice": 5090,
+      "maxPrice": 5090,
+      "samples": 4,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060 TI纳入游戏赠送阵容。官方不区分B与B显存版本，任意版本RTX 5060": {
+      "medianPrice": 5060,
+      "minPrice": 5060,
+      "maxPrice": 5060,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060 TI 的性价比要比RTX 5060": {
+      "medianPrice": 5060,
+      "minPrice": 5060,
+      "maxPrice": 5060,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060 TI移动型号，活动门槛直接设置为RTX 5060": {
+      "medianPrice": 5060,
+      "minPrice": 5060,
+      "maxPrice": 5060,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060 TI  GDDR7 游戏高手OC PA 2799": {
+      "medianPrice": 2799,
+      "minPrice": 2799,
+      "maxPrice": 2799,
+      "samples": 4,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060 TI DUO B GDDR7盈通 RTX 5060": {
+      "medianPrice": 5060,
+      "minPrice": 5060,
+      "maxPrice": 5060,
+      "samples": 4,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060TI  XGAMING OC 3499": {
+      "medianPrice": 3499,
+      "minPrice": 3499,
+      "maxPrice": 3499,
+      "samples": 4,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060 TI  追风 V2 OC 2579": {
+      "medianPrice": 2579,
+      "minPrice": 2579,
+      "maxPrice": 2579,
+      "samples": 4,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060移动版显卡的游戏本产品。这是RTX 50系列上市以来，首次将RTX 5060": {
+      "medianPrice": 5060,
+      "minPrice": 5060,
+      "maxPrice": 5060,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060 TI均可享受赠游权益，也就是相当于RTX 5060": {
+      "medianPrice": 5060,
+      "minPrice": 5060,
+      "maxPrice": 5060,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060更好了。笔记本方面因无RTX 5060": {
+      "medianPrice": 5060,
+      "minPrice": 5060,
+      "maxPrice": 5060,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060起步。活动时间方面，本次英伟达捆绑促销5月13日正式开启，6月10日截止。活动期间购机领取的游戏激活码，玩家需在7月8日之前完成激活，逾期将会失效。2、NVIDIA已发通知，RTX50即将涨价据BENCHLIFE报道，在AMD显卡调价之后，市场一直在等待NVIDIA的动作，如今终于确认NVIDIA会调整RTX 50系列的价格。NVIDIA已经完成对各AIC合作伙伴的传达，RTX 5090": {
+      "medianPrice": 5090,
+      "minPrice": 5090,
+      "maxPrice": 5090,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060  星夜OC HB 2299": {
+      "medianPrice": 2299,
+      "minPrice": 2299,
+      "maxPrice": 2299,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060  战斧DUO 2339": {
+      "medianPrice": 2339,
+      "minPrice": 2339,
+      "maxPrice": 2339,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RTX 5060 大地之神 2232": {
+      "medianPrice": 2232,
+      "minPrice": 2232,
+      "maxPrice": 2232,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RX 9070 XT  樱瞳花嫁 OC 4449": {
+      "medianPrice": 4449,
+      "minPrice": 4449,
+      "maxPrice": 4449,
+      "samples": 4,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RX9070XT  SL 钢铁传奇 4549": {
+      "medianPrice": 4549,
+      "minPrice": 4549,
+      "maxPrice": 4549,
+      "samples": 4,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RX 9070  樱瞳水着 OC 3849": {
+      "medianPrice": 3849,
+      "minPrice": 3849,
+      "maxPrice": 3849,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    },
+    "RX 9060XT  D6 大地之神 2499": {
+      "medianPrice": 2499,
+      "minPrice": 2499,
+      "maxPrice": 2499,
+      "samples": 2,
+      "sources": [
+        "知乎"
+      ]
+    }
+  },
+  "raw": [
+    {
+      "product": "RTX 5090、RTX 5080",
+      "price": 5080,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.147Z"
+    },
+    {
+      "product": "RTX 5090、RTX 5080",
+      "price": 5080,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5090与RTX 5090",
+      "price": 5090,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5090/5090",
+      "price": 5090,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5090、RTX 5080",
+      "price": 5080,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5090、RTX 5080",
+      "price": 5080,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5090与RTX 5090",
+      "price": 5090,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5090/5090",
+      "price": 5090,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5080、RTX 5070",
+      "price": 5070,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5080、RTX 5070",
+      "price": 5070,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5080、RTX 5070",
+      "price": 5070,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5080、RTX 5070",
+      "price": 5070,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5070 Ti、RTX 5070",
+      "price": 5070,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5070 Ti、RTX 5070",
+      "price": 5070,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5070 Ti、RTX 5070",
+      "price": 5070,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5070 Ti、RTX 5070",
+      "price": 5070,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5070 Ti、RTX 5070",
+      "price": 5070,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5070 Ti、RTX 5070",
+      "price": 5070,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX5070 SOLID OC WHITE 12G 4549",
+      "price": 4549,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX5070 12G霹雳版OC HB 4559",
+      "price": 4559,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX5070 12G三风扇 4249",
+      "price": 4249,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX5070 12G星云 4359",
+      "price": 4359,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5070 Ti、RTX 5070",
+      "price": 5070,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5070 Ti、RTX 5070",
+      "price": 5070,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX5070 SOLID OC WHITE 12G 4549",
+      "price": 4549,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX5070 12G霹雳版OC HB 4559",
+      "price": 4559,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX5070 12G三风扇 4249",
+      "price": 4249,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX5070 12G星云 4359",
+      "price": 4359,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5060Ti 16G降至3499",
+      "price": 3499,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.148Z"
+    },
+    {
+      "product": "RTX 5060 Ti 16GB GDDR7 大地之神索泰 RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060Ti 16G降到了3499",
+      "price": 3499,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti 16GB GDDR7 大地之神索泰 RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060Ti 16G降到了3499",
+      "price": 3499,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060Ti 16G降至3499",
+      "price": 3499,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti 全主流型号;笔记本端则包含搭载RTX 5090",
+      "price": 5090,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti纳入游戏赠送阵容。官方不区分8GB与16GB显存版本，任意版本RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 TI 8G的性价比要比RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti移动型号，活动门槛直接设置为RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti 8G GDDR7 游戏高手OC PA 2799",
+      "price": 2799,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti DUO 16GB GDDR7盈通 RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060Ti 16G XGAMING OC 3499",
+      "price": 3499,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060Ti 16G降到了3499",
+      "price": 3499,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti 8G 追风 V2 OC 2579",
+      "price": 2579,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti 全主流型号;笔记本端则包含搭载RTX 5090",
+      "price": 5090,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti纳入游戏赠送阵容。官方不区分8GB与16GB显存版本，任意版本RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 TI 8G的性价比要比RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti移动型号，活动门槛直接设置为RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti 8G GDDR7 游戏高手OC PA 2799",
+      "price": 2799,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti DUO 16GB GDDR7盈通 RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060Ti 16G XGAMING OC 3499",
+      "price": 3499,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060Ti 16G降到了3499",
+      "price": 3499,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti 8G 追风 V2 OC 2579",
+      "price": 2579,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060Ti 16G降至3499",
+      "price": 3499,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti 全主流型号;笔记本端则包含搭载RTX 5090",
+      "price": 5090,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060移动版显卡的游戏本产品。这是RTX 50系列上市以来，首次将RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti均可享受赠游权益，也就是相当于RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060更好了。笔记本方面因无RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060起步。活动时间方面，本次英伟达捆绑促销5月13日正式开启，6月10日截止。活动期间购机领取的游戏激活码，玩家需在7月8日之前完成激活，逾期将会失效。2、NVIDIA已发通知，RTX50即将涨价据BenchLife报道，在AMD显卡调价之后，市场一直在等待NVIDIA的动作，如今终于确认NVIDIA会调整RTX 50系列的价格。NVIDIA已经完成对各AIC合作伙伴的传达，RTX 5090",
+      "price": 5090,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti 8G GDDR7 游戏高手OC PA 2799",
+      "price": 2799,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti DUO 16GB GDDR7盈通 RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060Ti 16G XGAMING OC 3499",
+      "price": 3499,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060Ti 16G降到了3499",
+      "price": 3499,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 8G 星夜OC HB 2299",
+      "price": 2299,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 8G 战斧DUO 2339",
+      "price": 2339,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 8G大地之神 2232",
+      "price": 2232,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti 8G 追风 V2 OC 2579",
+      "price": 2579,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti 全主流型号;笔记本端则包含搭载RTX 5090",
+      "price": 5090,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060移动版显卡的游戏本产品。这是RTX 50系列上市以来，首次将RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti均可享受赠游权益，也就是相当于RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060更好了。笔记本方面因无RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060起步。活动时间方面，本次英伟达捆绑促销5月13日正式开启，6月10日截止。活动期间购机领取的游戏激活码，玩家需在7月8日之前完成激活，逾期将会失效。2、NVIDIA已发通知，RTX50即将涨价据BenchLife报道，在AMD显卡调价之后，市场一直在等待NVIDIA的动作，如今终于确认NVIDIA会调整RTX 50系列的价格。NVIDIA已经完成对各AIC合作伙伴的传达，RTX 5090",
+      "price": 5090,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti 8G GDDR7 游戏高手OC PA 2799",
+      "price": 2799,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti DUO 16GB GDDR7盈通 RTX 5060",
+      "price": 5060,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060Ti 16G XGAMING OC 3499",
+      "price": 3499,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060Ti 16G降到了3499",
+      "price": 3499,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 8G 星夜OC HB 2299",
+      "price": 2299,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 8G 战斧DUO 2339",
+      "price": 2339,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 8G大地之神 2232",
+      "price": 2232,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RTX 5060 Ti 8G 追风 V2 OC 2579",
+      "price": 2579,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RX 9070 XT 16G 樱瞳花嫁 OC 4449",
+      "price": 4449,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RX9070XT 16G SL 钢铁传奇 4549",
+      "price": 4549,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RX 9070 XT 16G 樱瞳花嫁 OC 4449",
+      "price": 4449,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RX9070XT 16G SL 钢铁传奇 4549",
+      "price": 4549,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RX 9070 16G 樱瞳水着 OC 3849",
+      "price": 3849,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RX 9070 XT 16G 樱瞳花嫁 OC 4449",
+      "price": 4449,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RX9070XT 16G SL 钢铁传奇 4549",
+      "price": 4549,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RX 9070 16G 樱瞳水着 OC 3849",
+      "price": 3849,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RX 9070 XT 16G 樱瞳花嫁 OC 4449",
+      "price": 4449,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RX9070XT 16G SL 钢铁传奇 4549",
+      "price": 4549,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RX 9060XT 16G D6 大地之神 2499",
+      "price": 2499,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    },
+    {
+      "product": "RX 9060XT 16G D6 大地之神 2499",
+      "price": 2499,
+      "source": "知乎",
+      "url": "https://zhuanlan.zhihu.com/p/2038387836332806327",
+      "date": "2026-05-20T07:01:47.149Z"
+    }
+  ]
+}
