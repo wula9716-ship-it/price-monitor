@@ -890,11 +890,10 @@ app.get('/api/ranking', (req, res) => {
   const cat = categoryKeywords[category] || categoryKeywords.gpu;
 
   let items = cat.items.map(item => {
-    // 新算法: 每元性能 = 性能分 / 二手价(百元) × 10
-    // 以RTX 4060为100%基准(3DMark Time Spy: 10619分)
+    // 新算法: 每元性能 = 性能分 / 二手价(百元)
+    // RX 7600 (103分/1250元=8.24) 作为100分基准
     const performancePer100Yuan = (item.performance / (item.basePrice / 100));
-    // 归一化到0-100分（基于最高性价比的卡）
-    const maxPPY = 15; // 假设最高性价比约为15
+    const maxPPY = 8.24; // RX 7600的性价比作为满分基准
     const valueScore = Math.min(Math.round((performancePer100Yuan / maxPPY) * 100), 100);
 
     // 计算24小时涨跌（基于价格与新品价的偏离度模拟）
